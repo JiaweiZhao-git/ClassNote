@@ -12,6 +12,7 @@ import com.dlut.justeda.classnote.R;
 /**
  * 用于显示share主界面——之后可以跳转到其它activity
  * Created by 赵佳伟 on 2016/11/9.
+ * chaomaer is creating
  */
 public class ShareFragment extends Fragment {
 
