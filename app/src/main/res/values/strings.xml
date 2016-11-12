@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ClassNote</string>
+    <string name="share_sharespace">资源共享</string>
+    <string name="share_myname">我的名字</string>
+    <string name="defalut_content">hello world</string>
+    <string name="share_comment">评论</string>
+</resources>
