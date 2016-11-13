@@ -1,5 +1,6 @@
 package com.dlut.justeda.classnote.justpublic.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.dlut.justeda.classnote.R;
+import com.dlut.justeda.classnote.note.activity.NoteListActivity;
 import com.dlut.justeda.classnote.note.noteadapter.NoteAdapter;
 import com.dlut.justeda.classnote.note.noteadapter.NoteItem;
 import com.dlut.justeda.classnote.note.util.OpenPhotoAlbum;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 本地笔记的界面
  * Created by 赵佳伟 on 2016/11/9.
  */
 public class NoteFragment extends Fragment {
@@ -36,6 +39,7 @@ public class NoteFragment extends Fragment {
         initViews();
 
         initEvents();
+
         return view;
     }
 
@@ -43,9 +47,13 @@ public class NoteFragment extends Fragment {
         noteList.add(new NoteItem("相册管理", R.drawable.note_album));
         noteList.add(new NoteItem("QQ文件管理",R.drawable.note_qq));
         noteList.add(new NoteItem("其它",R.drawable.note_item));
+        //需要添加其它课程信息
     }
 
     private void initEvents() {
+
+        noteAdapter = new NoteAdapter(getContext(), noteList);
+        listView.setAdapter(noteAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -62,9 +70,14 @@ public class NoteFragment extends Fragment {
                     startActivityForResult(intent, CHOOSE_PHOTO);
                 } else if (position == 1) {
                     //暂时不会处理qq，应该是找响应的文件夹
+                }else{
+                    Intent intent = new Intent(getContext(), NoteListActivity.class);
+                    startActivity(intent);
                 }
             }
         });
+
+
     }
 
     @Override
@@ -77,5 +90,15 @@ public class NoteFragment extends Fragment {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

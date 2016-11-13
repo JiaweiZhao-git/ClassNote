@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dlut.justeda.classnote.R;
@@ -15,7 +16,12 @@ import com.dlut.justeda.classnote.justpublic.fragment.CameraFragment;
 import com.dlut.justeda.classnote.justpublic.fragment.NoteFragment;
 import com.dlut.justeda.classnote.justpublic.fragment.ShareFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
+ * 最重要的主界面
+ *bug——切换时有时候会重叠，或者不响应——已解决
  * Created by 赵佳伟 on 2016/11/9.
  */
 public class MainActivity extends FragmentActivity implements View.OnClickListener{
@@ -24,9 +30,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private ImageButton cameraImageButton;
     private ImageButton shareImageButton;
 
-    private Fragment noteFragment;
-    private Fragment cameraFragment;
-    private Fragment shareFragment;
+    private RelativeLayout noteRelativeLayout;
+    private RelativeLayout shareRelativeLayout;
+
+    private ArrayList<Fragment> fragmentArrayList;
+
+    private int currentIndex = 1;
+    private Fragment currentFragment;
 
     private SlidingMenu mSlidingMenu;
     private TextView tv1;
@@ -43,76 +53,106 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private void initViews(){
         noteImageButton = (ImageButton) findViewById(R.id.note_buttom);
+       // noteImageButton.setFocusable(false);
+        noteRelativeLayout = (RelativeLayout) findViewById(R.id.note_relativeLayout);
+        noteRelativeLayout.setOnClickListener(this);
+        noteRelativeLayout.setTag(0);
+
         cameraImageButton = (ImageButton) findViewById(R.id.camera_buttom);
+        cameraImageButton.setOnClickListener(this);
+        cameraImageButton.setTag(1);
+
         shareImageButton = (ImageButton) findViewById(R.id.share_buttom);
+     //   shareImageButton.setFocusable(false);
+        shareRelativeLayout = (RelativeLayout) findViewById(R.id.share_relativeLayout);
+        shareRelativeLayout.setOnClickListener(this);
+        shareRelativeLayout.setTag(2);
 
         mSlidingMenu = (SlidingMenu) findViewById(R.id.slidingmenu);
     }
 
     private void initEvents() {
-        noteImageButton.setOnClickListener(this);
-        cameraImageButton.setOnClickListener(this);
-        shareImageButton.setOnClickListener(this);
+        fragmentArrayList = new ArrayList<Fragment>(3);
+        fragmentArrayList.add(new NoteFragment());
+        fragmentArrayList.add(new CameraFragment());
+        fragmentArrayList.add(new ShareFragment());
+
+        cameraImageButton.setSelected(true);
+
+        changeTab(1);
+
     }
+
+
 
     @Override
     public void onClick(View view) {
-        //重置所有buttom按钮的颜色
         resetImage();
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        hideFragment(transaction);
-
-        switch (view.getId()) {
-            case R.id.note_buttom:
-                if (noteFragment == null) {
-                    noteFragment = new NoteFragment();
-                    transaction.add(R.id.frameLayout, noteFragment);
-                }else{
-                    transaction.show(noteFragment);
-                }
-                //此处应设置按压后的按钮图片
-
-                break;
-            case R.id.camera_buttom:
-                if (cameraFragment == null) {
-                    cameraFragment = new CameraFragment();
-                    transaction.add(R.id.frameLayout, cameraFragment);
-                }else{
-                    transaction.show(cameraFragment);
-                }
-                //此处应设置按压后的按钮图片
-
-                break;
-            case R.id.share_buttom:
-                if (shareFragment == null) {
-                    shareFragment = new ShareFragment();
-                    transaction.add(R.id.frameLayout, shareFragment);
-                }else{
-                    transaction.show(shareFragment);
-                }
-                //此处应设置按压后的按钮图片
-
-                break;
-            default:
-                break;
-        }
-        transaction.commit();
+        changeTab((Integer)view.getTag());
     }
 
-    private void hideFragment(FragmentTransaction transaction) {
-        if (noteFragment != null) {
-            transaction.hide(noteFragment);
+    /**
+     * 切换fragment
+     * @param index
+     */
+    private void changeTab(int index) {
+        currentIndex = index;
+        if (index == 0) {
+            noteRelativeLayout.setSelected(true);
+            noteImageButton.setBackgroundResource(R.drawable.note_pressed);
         }
-        if (cameraFragment != null) {
-            transaction.hide(cameraFragment);
+        if (index == 1) {
+            cameraImageButton.setSelected(true);
+            //设置一个动态回缩放弹性效果
         }
-        if (shareFragment != null) {
-            transaction.hide(shareFragment);
+        if (index == 2) {
+            shareRelativeLayout.setSelected(true);
+            shareImageButton.setBackgroundResource(R.drawable.share_pressed);
         }
+
+        FragmentTransaction ft = getSupportFragmentManager()
+                .beginTransaction();
+        //
+        if (null != currentFragment) {
+            ft.hide(currentFragment);
+        }
+
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(
+                fragmentArrayList.get(currentIndex).getClass().getName());
+        if (null == fragment) {
+            fragment = fragmentArrayList.get(index);
+        }
+        currentFragment = fragment;
+
+        if (!fragment.isAdded()) {
+            ft.add(R.id.frameLayout, fragment, fragment.getClass().getName());
+        }else {
+            ft.show(fragment);
+        }
+        ft.commit();
+
     }
 
+    /**
+     * 切换时先把所有图标置为灰色
+     */
     private void resetImage() {
+        noteImageButton.setBackgroundResource(R.drawable.note_normal);
+        shareImageButton.setBackgroundResource(R.drawable.share_normal);
+    }
+
+    /**
+     * 用于判断当前界面是哪个fragment
+     * @return
+     */
+    public Fragment getVisibleFragment(){
+        FragmentManager fragmentManager = MainActivity.this.getSupportFragmentManager();
+        List<Fragment> fragments = fragmentManager.getFragments();
+        for(Fragment fragment : fragments){
+            if(fragment != null && fragment.isVisible())
+                return fragment;
+        }
+        return null;
     }
 }

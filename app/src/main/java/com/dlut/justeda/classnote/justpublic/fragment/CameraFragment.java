@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.dlut.justeda.classnote.R;
 
 /**
+ *
  * Created by 赵佳伟 on 2016/11/9.
  */
 public class CameraFragment extends Fragment {

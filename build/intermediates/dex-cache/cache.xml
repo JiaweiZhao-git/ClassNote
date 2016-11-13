@@ -2,67 +2,11 @@
 <items version="2" >
 
     <item
-        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.0.0-alpha2\jars\classes.jar"
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\homhomlin.lib\sldinglayout\0.9.0\jars\classes.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="661a632c3b434991d6364690cbe0f786371101cc">
-        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.0.0-alpha2_e5cb61868c3325cc0ef09fa68ab3692b8720ce88\classes.dex" />
-    </item>
-    <item
-        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0-alpha2\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="32ab8bede8cd600f25a5bb3fe15068c81c8910dc">
-        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.0.0-alpha2_2181d4d55098f7017fa95de479de8a25285c71bd\classes.dex" />
-    </item>
-    <item
-        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.0.0-alpha2\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="bf5aa3b026d5b5fd9f4ab5e8cf13499b9e016dfb">
-        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.0.0-alpha2_ac438199be425890fb1650b26c92aab8539ee198\classes.dex" />
-    </item>
-    <item
-        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="0ce35e5ebfca835383e84257a619c9a6d5f3f192">
-        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_5c4bc93d57086f1b218642c33270962440968f2d\classes.dex" />
-    </item>
-    <item
-        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="244c9b0b3412c0675762a25bcc05cb65af2172fe">
-        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_c2d417384aade7005f39c6437e33032be6282cfc\classes.dex" />
-    </item>
-    <item
-        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.makeramen\roundedimageview\2.2.1\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="814fc0c3ec69a944add398217d90077301501a74">
-        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.makeramen-roundedimageview-2.2.1_f141c3e6b620bfc422d1acd705428cc21868dc86\classes.dex" />
-    </item>
-    <item
-        jar="E:\androidstudio\SDK\extras\android\m2repository\com\android\support\support-annotations\24.0.0-alpha2\support-annotations-24.0.0-alpha2.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="8071e1e6cd07e9253720313d6c14286a7ee424e0">
-        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.0.0-alpha2_2dac03814acb4405389e858a8ad20889736616ea\classes.dex" />
-    </item>
-    <item
-        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.0.0-alpha2\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="df7f6513d6e2aaa302bbac654807c6129b517090">
-        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.0.0-alpha2_0ca2b21c42fe4eeb481c823c173bf35da9bf21f1\classes.dex" />
-    </item>
-    <item
-        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0-alpha2\jars\libs\internal_impl-24.0.0-alpha2.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="e460bc069dfd21d22770cf2a2370c9021b9c98a2">
-        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0-alpha2_6a4a801a437402228ca689beedc6ae37fa73fb7b\classes.dex" />
+        sha1="f1d31d4efd059352ebe46a3266954a59f41db52a">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\homhomlin.lib-sldinglayout-0.9.0_54a6e58e66d082b24c15d57d4c9c9d48dcd30f13\classes.dex" />
     </item>
 
 </items>

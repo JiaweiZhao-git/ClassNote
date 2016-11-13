@@ -28,4 +28,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //一个比较好看的imageview
     compile 'com.makeramen:roundedimageview:2.2.1'
+    //一个可以当ImageView使用的图片浏览缩放控件
+    compile 'com.bm.photoview:library:1.4.1'
+    //一个类微信网页浏览的下拉效果
+    compile 'homhomlin.lib:sldinglayout:0.9.0'
 }

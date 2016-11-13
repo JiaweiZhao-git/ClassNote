@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.bm.library.PhotoView
+        android:id="@+id/note_sourcePicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:src="@drawable/camera"/>
+    <EditText
+        android:id="@+id/note_textOfPictures"
+        android:layout_below="@id/note_sourcePicture"
+        android:background="@null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="点击这里做点笔记吧"
+        android:minLines="5"/>
+    <Button
+        android:id="@+id/note_save_textOfPictures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="35dp"
+        android:text="保存"/>
+
+
+</RelativeLayout>
