@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.bm.library.PhotoView
         android:id="@+id/note_sourcePicture"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="centerInside"
-        android:src="@drawable/camera"/>
+        android:layout_marginTop="24dp"
+        />
     <EditText
         android:id="@+id/note_textOfPictures"
-        android:layout_below="@id/note_sourcePicture"
+        android:layout_alignParentTop="true"
         android:background="@null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="点击这里做点笔记吧"
-        android:minLines="5"/>
+        android:gravity="top"
+        android:hint="好记性不如课堂笔记..."
+        android:minLines="3"/>
     <Button
         android:id="@+id/note_save_textOfPictures"
         android:layout_width="wrap_content"

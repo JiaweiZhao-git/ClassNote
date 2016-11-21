@@ -40,6 +40,11 @@ public class NoteAdapter extends BaseAdapter {
         return position;
     }
 
+    public String getItemLastChar(int i){
+        int length = mlist.get(i).getName().length();
+        return mlist.get(i).getName().substring(length - 2, length - 1);
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -48,6 +53,7 @@ public class NoteAdapter extends BaseAdapter {
             convertView = mLayoutInflater.inflate(R.layout.note_item, null);
             holder.img = (ImageView) convertView.findViewById(R.id.noteitem_image);
             holder.title = (TextView) convertView.findViewById(R.id.noteitem_text);
+            holder.img_content = (TextView) convertView.findViewById(R.id.noteitem_image_content);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -58,6 +64,7 @@ public class NoteAdapter extends BaseAdapter {
             holder.img.setImageBitmap(noteItem.getBitmap());
         }else{
             holder.img.setImageResource(noteItem.getImageID());
+            holder.img_content.setText(getItemLastChar(position));
         }
         holder.title.setText(noteItem.getName());
         return convertView;
@@ -66,7 +73,9 @@ public class NoteAdapter extends BaseAdapter {
     class ViewHolder{
         public ImageView img;
         public TextView title;
+        public TextView img_content;
     }
+
 
 
 }

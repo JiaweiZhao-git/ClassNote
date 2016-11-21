@@ -22,19 +22,28 @@ public class PicCompress {
     private String path;
     private String name;
     private String smallPath;
-    private Bitmap bitmip;
+    private Bitmap bitmip =null;
     private Bitmap smallBitmap;
     private File smallFile;
 
-    public PicCompress(String name,String path,Bitmap bitmap) {
+    public PicCompress(String name,Bitmap bitmap,String path) {
         this.name = name;
         this.path = path;
         this.bitmip =bitmap;
     }
 
-    void compressPictures(){
+    public PicCompress(String name, String fromPath) {
+        this.name = name;
+        this.path = fromPath;
+    }
 
-        bitmip = getDiskBitmap(path);
+    public void compressPictures(){
+
+        if (bitmip == null) {
+            bitmip = getDiskBitmap(path);
+        }else{
+            bitmip = getDiskBitmap(path);
+        }
 
         smallPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/ClassNote/"+name+"/small";
         File file = new File(smallPath);
@@ -42,7 +51,7 @@ public class PicCompress {
             file.mkdirs();
         }
 
-        smallFile = new File(smallPath+"/"+name+path.substring(33, 49)+".png");
+        smallFile = new File(smallPath+"/"+path.substring(path.length()-20,path.length()-4)+".png");
         Log.e("small",name);
         smallBitmap = zoomImage(bitmip,100,100);
 

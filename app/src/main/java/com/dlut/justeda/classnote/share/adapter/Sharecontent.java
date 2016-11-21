@@ -1,33 +1,20 @@
 package com.dlut.justeda.classnote.share.adapter;
-
-import android.graphics.Bitmap;
-
 /**
  * Created by chaomaer on 2016/11/7.
  */
 
 public class Sharecontent {
-    private String content;
-    private Bitmap imageView;
+    public String myimgurl;
+    public String myname;
+    public String sharecontent;
+    public String shareimgurl;
+    public int praisetime;
+    public int commenttime;
 
-    public Sharecontent(String content, Bitmap imageView) {
-        this.content = content;
-        this.imageView = imageView;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Bitmap getImageView() {
-        return imageView;
-    }
-
-    public void setImageView(Bitmap imageView) {
-        this.imageView = imageView;
+    public Sharecontent(String myimgurl, String myname, String sharecontent, String shareimgurl) {
+        this.myimgurl = myimgurl;
+        this.myname = myname;
+        this.sharecontent = sharecontent;
+        this.shareimgurl = shareimgurl;
     }
 }

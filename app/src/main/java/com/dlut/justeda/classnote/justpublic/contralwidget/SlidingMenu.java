@@ -12,6 +12,8 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
 /**
+ * 主界面的侧滑控件
+ * bug——与camera冲突——应该是分发事件拦截——不会
  * Created by 赵佳伟 on 2016/11/9.
  */
 public class SlidingMenu extends HorizontalScrollView {

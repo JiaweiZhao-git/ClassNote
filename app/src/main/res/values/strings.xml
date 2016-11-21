@@ -2,6 +2,10 @@
     <string name="app_name">ClassNote</string>
     <string name="share_sharespace">资源共享</string>
     <string name="share_myname">我的名字</string>
-    <string name="defalut_content">hello world</string>
+    <string name="defalut_content">我什么也没有说</string>
     <string name="share_comment">评论</string>
+    <string name="edit_hint">随便吐槽.....</string>
+    <string name="share_comment_default">我无话可说.....</string>
+    <string name="share_publictitle">分享笔记</string>
+    <string name="share_img_hint">介绍一下你的笔记吧...</string>
 </resources>

@@ -7,6 +7,8 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/share_main_back"
+            android:text="back"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
@@ -16,16 +18,21 @@
             android:gravity="center"
             android:text="@string/share_sharespace"
             android:layout_height="wrap_content" />
+
         <Button
+            android:text="add"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:id="@+id/share_main_add" />
     </LinearLayout>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/share_swiperefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ListView
+            android:background="@mipmap/ic_launcher"
+            android:listSelector="@android:color/transparent"
             android:id="@+id/share_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

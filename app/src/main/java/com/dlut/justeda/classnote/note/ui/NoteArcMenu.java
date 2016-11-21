@@ -42,6 +42,8 @@ public class NoteArcMenu extends ViewGroup implements View.OnClickListener{
     //事件回掉接口
     private OnMenuItemClickListener mMenuItemClickListener;
 
+    protected OnCreateNoteListener mOnCreateNoteListener;
+
     /**
      * 点击子菜单项的回调接口
      */
@@ -49,9 +51,21 @@ public class NoteArcMenu extends ViewGroup implements View.OnClickListener{
         void onClick(View view, int pos);
     }
 
+    /**
+     * 单击加号建立一个文本笔记的回掉接口
+     */
+    public interface OnCreateNoteListener{
+        void onCreateNoteClick();
+    }
+
     public void setOnMenuItemClickListener(
             OnMenuItemClickListener mMenuItemClickListener) {
         this.mMenuItemClickListener = mMenuItemClickListener;
+    }
+
+    public void setOnCreateNoteListener(
+            OnCreateNoteListener mOnCreateNoteListener){
+        this.mOnCreateNoteListener = mOnCreateNoteListener;
     }
 
     public NoteArcMenu(Context context) {
@@ -193,10 +207,15 @@ public class NoteArcMenu extends ViewGroup implements View.OnClickListener{
         // mCButton = getChildAt(0);
         // }
 
-        rotateCButton(v, 0f, 360f, 300);
+        //rotateCButton(v, 0f, 360f, 300);
         //所有动画响应200ms
-        toggleMenu(250);
+        if (mOnCreateNoteListener != null) {
+            mOnCreateNoteListener.onCreateNoteClick();
+        }
+    }
 
+    public void onLongClick(View v){
+        toggleMenu(250);
     }
 
     /**
@@ -385,7 +404,7 @@ public class NoteArcMenu extends ViewGroup implements View.OnClickListener{
     }
 
     /**
-     * 为主菜单添加自身旋转动画
+     * 为主菜单添加自身旋转动画——暂时取消使用
      * @param v
      * @param start
      * @param end

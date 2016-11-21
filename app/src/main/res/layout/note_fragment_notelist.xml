@@ -6,6 +6,8 @@
 
     <lib.homhomlib.design.SlidingLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/notelist_slidinglayout"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:sliding_pointer_mode="more"
@@ -13,15 +15,14 @@
         app:background_view="@layout/note_view_bg"
         android:background="@color/bg_white">
 
-    <ListView
-        android:id="@+id/note_fragment_pictures_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_white"
-        android:divider="#00000000"
-        >
+            <ListView
+                android:id="@+id/note_fragment_pictures_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_white"
+                android:divider="#00000000"
+                ></ListView>
 
-    </ListView>
     </lib.homhomlib.design.SlidingLayout>
 
     <include layout="@layout/note_list_arcmenu"/>

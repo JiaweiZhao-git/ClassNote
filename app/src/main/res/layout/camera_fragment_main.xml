@@ -1,10 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <TextView
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="this is camera fragment"/>
-</LinearLayout>
+        android:layout_height="match_parent">
+
+
+
+        <SurfaceView
+            android:id="@+id/sf_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+                <io.values.camera.widget.FocusView
+                    android:id="@+id/sf_focus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <ImageView
+                    android:id="@+id/img_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/djg"
+                    android:scaleType="fitXY"
+                    android:visibility="gone" />
+                <ImageButton
+                    android:id="@+id/camera_flash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/camera_flash_auto"/>
+
+        </RelativeLayout>
+
+
+</RelativeLayout>

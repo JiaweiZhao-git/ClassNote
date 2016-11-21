@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
+<items version="2" />
 
-    <item
-        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\homhomlin.lib\sldinglayout\0.9.0\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="f1d31d4efd059352ebe46a3266954a59f41db52a">
-        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\homhomlin.lib-sldinglayout-0.9.0_54a6e58e66d082b24c15d57d4c9c9d48dcd30f13\classes.dex" />
-    </item>
-
-</items>

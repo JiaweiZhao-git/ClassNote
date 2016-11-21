@@ -3,6 +3,7 @@ package com.dlut.justeda.classnote.note.noteadapter;
 import android.graphics.Bitmap;
 
 /**
+ * 课表界面
  * Created by 赵佳伟 on 2016/11/9.
  */
 public class NoteItem {
