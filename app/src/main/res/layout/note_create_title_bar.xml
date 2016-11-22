@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/main_blue">
+
+    <ImageButton
+        android:id="@+id/createnote_titlebar_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/createnote_titlebar_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/font_write"
+        android:text="记笔记"/>
+
+    <ImageButton
+        android:id="@+id/createnote_titlebar_save"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_launcher"
+        android:layout_alignParentRight="true"/>
+
+
+
+</RelativeLayout>

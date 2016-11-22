@@ -9,12 +9,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.dlut.justeda.classnote.R;
 import com.dlut.justeda.classnote.note.noteadapter.NoteItem;
 import com.dlut.justeda.classnote.note.noteadapter.NoteListAdapter;
 import com.dlut.justeda.classnote.note.ui.NoteArcMenu;
+import com.dlut.justeda.classnote.note.ui.RenameDialog;
 import com.dlut.justeda.classnote.note.util.BitmapUtil;
+import com.dlut.justeda.classnote.note.util.ClassTime;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,6 +40,12 @@ public class NoteListActivity extends Activity {
     private NoteListAdapter noteListAdapter;
     private List<NoteItem> noteItemsList = new ArrayList<>();
     private SlidingLayout slidingLayout;
+    private RenameDialog renameDialog;
+    private ClassTime currentTime;
+
+    private TextView titleTextView;
+    private String title_text;
+    private int cuttentPos = 0;
 
     private HashMap<Integer, String> imagePath=new HashMap<Integer, String>();
 
@@ -51,6 +60,11 @@ public class NoteListActivity extends Activity {
     }
 
     private void initViews() {
+        titleTextView = (TextView) findViewById(R.id.note_list_title_bar_text);
+        Intent intent = getIntent();
+        title_text = intent.getStringExtra("name");
+        titleTextView.setText(title_text);
+
         slidingLayout = (SlidingLayout) findViewById(R.id.notelist_slidinglayout);
         noteArcMenu = (NoteArcMenu) findViewById(R.id.note_arcmenu);
         listView = (ListView) findViewById(R.id.note_fragment_pictures_list);
@@ -58,7 +72,7 @@ public class NoteListActivity extends Activity {
         noteItemsList.add(new NoteItem("...", R.drawable.note_item));
         Bitmap bitmap=null;
         BitmapUtil bitmapUtil = new BitmapUtil();
-        String path= Environment.getExternalStorageDirectory().getAbsolutePath()+"/ClassNote/其他/small";
+        String path= Environment.getExternalStorageDirectory().getAbsolutePath()+"/ClassNote/"+title_text+"/small";
         File smallDirs = new File(path);
         int i=1;
         if (smallDirs.exists()) {
@@ -68,7 +82,10 @@ public class NoteListActivity extends Activity {
                 String imageName=file2.getAbsolutePath();
                 imagePath.put(i++, imageName);
                 bitmap=bitmapUtil.getLoacalBitmap(imageName);
-                noteItemsList.add(new NoteItem("aaaa","en",bitmap));
+                currentTime = new ClassTime();
+                String weekName = currentTime.getWeekName(imageName.substring(imageName.length() - 16, imageName.length() - 4));
+                String weekdayName = currentTime.getWeekDayName(imageName.substring(imageName.length() - 16, imageName.length() - 4));
+                noteItemsList.add(new NoteItem(weekName+weekdayName,"en",bitmap));
             }
         }
         noteListAdapter = new NoteListAdapter(NoteListActivity.this, noteItemsList);
@@ -106,7 +123,8 @@ public class NoteListActivity extends Activity {
          */
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+                cuttentPos = position;
                 noteArcMenu.onLongClick(view);
                 return true;
             }
@@ -122,9 +140,17 @@ public class NoteListActivity extends Activity {
                 if (position == 0) {
                     finish();
                 }else{
-                    Intent intent = new Intent(NoteListActivity.this, ReadNoteActivity.class);
-                    intent.putExtra("path", imagePath.get(position));
-                    startActivity(intent);
+                    String index = imagePath.get(position)
+                            .substring(imagePath.get(position).length()-20,imagePath.get(position).length()-16);
+                    if (index != "NOTE") {
+                        Intent intent = new Intent(NoteListActivity.this, CreateNote.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(NoteListActivity.this, ReadNoteActivity.class);
+                        intent.putExtra("path", imagePath.get(position));
+                        startActivity(intent);
+                    }
+
                 }
 
             }
@@ -132,12 +158,38 @@ public class NoteListActivity extends Activity {
 
         /**
          * 根据选中的不同位置pos
+         * pos==1 重命名
+         * pos==2 剪切
+         * pos==3 删除
+         * pos==4 复制
+         * pos==5 粘贴
          * 来进行相应的操作
          */
         noteArcMenu.setOnMenuItemClickListener(new NoteArcMenu.OnMenuItemClickListener() {
             @Override
-            public void onClick(View view, int pos) {
+            public void onClick(View view, final int pos) {
                 Log.e("arcMenu", String.valueOf(pos));
+                if (pos == 1) {
+                    renameDialog = new RenameDialog(NoteListActivity.this, "重命名", new RenameDialog.OnOKListener() {
+                        @Override
+                        public void getDialogValue(String str) {
+                            NoteItem noteItem = noteItemsList.get(cuttentPos);
+                            noteItem.setName(str);
+                            noteItemsList.set(cuttentPos, noteItem);
+                            noteListAdapter.notifyDataSetChanged();
+                        }
+                    });
+                    renameDialog.show();
+                } else if (pos == 2) {
+                    //剪切有个接口
+                } else if (pos == 3) {
+                    noteItemsList.remove(cuttentPos);
+                    noteListAdapter.notifyDataSetChanged();
+                } else if (pos == 4) {
+                    //复制有个接口
+                } else if (pos == 5) {
+                    //粘贴还是得长按一点才行
+                }
             }
         });
         /**
@@ -147,6 +199,7 @@ public class NoteListActivity extends Activity {
             @Override
             public void onCreateNoteClick() {
                 Intent intent = new Intent(NoteListActivity.this, CreateNote.class);
+                intent.putExtra("name", title_text);
                 startActivity(intent);
             }
         });

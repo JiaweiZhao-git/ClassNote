@@ -28,7 +28,10 @@ import java.util.List;
 /**
  * 最重要的主界面
  *bug——切换时有时候会重叠，或者不响应——已解决
- * 小bug——相机的zoom事件会和主界面的侧滑手势冲突
+ * 小bug——相机的zoom事件会和主界面的侧滑手势冲突——chaomaer解决
+ * changetab(n)返回的界面
+ * 需要相機按鍵動畫效果實現
+ * 最後將各個activity的finish()事件處理好
  * Created by 赵佳伟 on 2016/11/9.
  */
 public class MainActivity extends FragmentActivity implements View.OnClickListener{
@@ -138,8 +141,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 BitmapUtil bitmapUtil = new BitmapUtil();
                 bitmapUtil.renamePictures(className,Environment.getExternalStorageDirectory() + "/ClassNote/"+className+"/");
             }
+            mSlidingMenu.setInteruptAble(true);
         }
         if (index == 1) {
+            mSlidingMenu.setInteruptAble(false);
             if (!onCameraFragment) {
                 cameraImageButton.setSelected(true);
                 //设置一个动态回缩放弹性效果
@@ -165,6 +170,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         }
         if (index == 2) {
+            mSlidingMenu.setInteruptAble(false);
             shareRelativeLayout.setSelected(true);
             shareImageButton.setBackgroundResource(R.drawable.share_pressed);
             onCameraFragment = false;
@@ -228,5 +234,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             ((IOnFocusListenable) currentFragment).onWindowFocusChanged(hasFocus);
         }
     }
+
+
 
 }

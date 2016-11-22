@@ -1,14 +1,17 @@
 package com.dlut.justeda.classnote.share.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.dlut.justeda.classnote.R;
+import com.dlut.justeda.classnote.justpublic.contralwidget.ClassNameDialog;
 import com.dlut.justeda.classnote.justpublic.fragment.ShareFragment;
 import com.dlut.justeda.classnote.share.data.Data;
 import com.dlut.justeda.classnote.share.message.TopicMeg;
@@ -25,6 +28,8 @@ public class SharePublishActivity extends Activity implements View.OnClickListen
     private EditText publish_content;
     private ImageView publish_img;
     private String topcontent;
+
+    private ClassNameDialog classNameDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,8 @@ public class SharePublishActivity extends Activity implements View.OnClickListen
         button_back.setOnClickListener(this);
         button_publish.setOnClickListener(this);
         publish_img.setOnClickListener(this);
+
+        classNameDialog = new ClassNameDialog();
     }
 
     @Override
@@ -59,7 +66,29 @@ public class SharePublishActivity extends Activity implements View.OnClickListen
                 }
                 break;
             case R.id.share_share_image:
+
                 break;
+            case R.id.share_public_img:
+                classNameDialog.showClassNameListDialog(v,SharePublishActivity.this,SharePublishActivity.this);
+                break;
+        }
+    }
+
+    /**
+     * 返回選中的照片路徑，string
+     * 添加到圖片中
+     * 同時將dialog取消
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 110 && resultCode == 100) {
+            String result = data.getStringExtra("result");
+            Log.e(getLocalClassName(), result);
         }
     }
 }

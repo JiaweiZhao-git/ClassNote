@@ -1,8 +1,19 @@
 package com.dlut.justeda.classnote.justpublic.util;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Environment;
+import android.util.Log;
 
+import com.dlut.justeda.classnote.R;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  *
@@ -34,6 +45,33 @@ public class FileUtil {
             dir.mkdirs();
             smallDir.mkdirs();
         }
+    }
+
+    public void createTextFile(Context context,String className, String date) {
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath()+"/ClassNote/"+className+"/small/"+"TEXT"+date+".png";
+            //用默认图片填充这个文件
+            drawableTofile(context.getResources().getDrawable(R.drawable.ic_launcher),path);
+    }
+
+    public void drawableTofile(Drawable drawable, String path){
+        //Log.i(TAG, "drawableToFile:"+path);
+        Log.e("toFile", path);
+        File file=new File(path);
+        Bitmap bitmap=((BitmapDrawable)drawable).getBitmap();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] bitmapdata = bos.toByteArray();
+        //write the bytes in file
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(file);
+            fos.write(bitmapdata);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

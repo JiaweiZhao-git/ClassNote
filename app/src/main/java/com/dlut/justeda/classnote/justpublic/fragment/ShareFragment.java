@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.dlut.justeda.classnote.R;
@@ -29,7 +29,7 @@ import java.util.List;
  */
 public class ShareFragment extends Fragment implements View.OnClickListener ,View.OnTouchListener{
     private static final String TAG = "ShareFragment";
-    private Button button_back,button_add;
+    private ImageButton button_add;
     private View view;
     public static ShareImageAdapter shareImageAdapter;
     private List<TopicMeg> list;
@@ -39,26 +39,8 @@ public class ShareFragment extends Fragment implements View.OnClickListener ,Vie
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        view = inflater.inflate(R.layout.share_main_layout, container, false);
-        Log.e(TAG, "onCreateView: ====>is called");
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()){
-                    case MotionEvent.ACTION_DOWN:
-                        Log.e(TAG, "onTouch: ---->down" );
-                       // view.getParent().getParent().getParent().requestDisallowInterceptTouchEvent(true);
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        //view.getParent().getParent().getParent().requestDisallowInterceptTouchEvent(true);
-                        break;
-                    case MotionEvent.ACTION_CANCEL:
-                        //view.getParent().getParent().getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
-                }
-                return true;
-            }
-        });
-        //        Network.register("123","123");
+
+
         Network.login("123","123");
         Network.getTopcilist(1,10);
         initUI();
@@ -82,18 +64,16 @@ public class ShareFragment extends Fragment implements View.OnClickListener ,Vie
     private void initUI() {
         listView= (ListView)view.findViewById(R.id.share_listview);
         swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.share_swiperefresh);
-        button_add= (Button) view.findViewById(R.id.share_main_back);
-        button_back= (Button) view.findViewById(R.id.share_main_add);
+        button_add= (ImageButton) view.findViewById(R.id.share_title_add);
+
         button_add.setOnClickListener(this);
-        button_back.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.share_main_back:
-                break;
-            case R.id.share_main_add:
+            case R.id.share_title_add:
                 startActivity(new Intent(getContext(),SharePublishActivity.class));
                 break;
         }
@@ -115,5 +95,5 @@ public class ShareFragment extends Fragment implements View.OnClickListener ,Vie
         }
         return true;
     }
-    
+
 }

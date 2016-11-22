@@ -23,31 +23,31 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/composer_music"
-        android:tag="Music" />
+        android:src="@drawable/note_rename"
+        android:tag="Rename" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/composer_place"
-        android:tag="Place" />
+        android:src="@drawable/note_shear"
+        android:tag="Shear" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/composer_sleep"
-        android:tag="Sleep" />
+        android:src="@drawable/note_delete"
+        android:tag="Delete" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/composer_thought"
-        android:tag="Sun" />
+        android:src="@drawable/note_copy"
+        android:tag="Copy" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/composer_with"
-        android:tag="People" />
+        android:src="@drawable/note_stick"
+        android:tag="Stick" />
 
 </com.dlut.justeda.classnote.note.ui.NoteArcMenu>

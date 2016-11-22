@@ -26,6 +26,12 @@ public class SlidingMenu extends HorizontalScrollView {
     private int mMenuRightPadding = 50;
     private boolean once=false;
 
+    private boolean interuptAble = false;
+
+    public void setInteruptAble(boolean interuptAble) {
+        this.interuptAble = interuptAble;
+    }
+
     private OnSlidingMenuClickListener onSlidingMenuClickListener;
     public interface OnSlidingMenuClickListener{
         void onClick(View view);
@@ -110,6 +116,16 @@ public class SlidingMenu extends HorizontalScrollView {
                 return true;
         }
         return super.onTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if (interuptAble) {
+            return super.onInterceptTouchEvent(ev);
+        }else{
+            return false;
+        }
+
     }
 }
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/note_list_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/main_blue">
+
+        <ImageButton
+            android:id="@+id/note_list_for_choose_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/note_list_for_choose_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="請選擇照片..."
+            android:textColor="@color/font_write"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/note_list_for_choose_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_white"
+        >
+
+    </ListView>
+
+
+
+
+
+
+</LinearLayout>

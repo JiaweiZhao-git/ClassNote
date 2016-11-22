@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/bg_white">
 
+   <include layout="@layout/note_title_bar"/>
+
    <ListView
        android:id="@+id/note_main_courselist"
        android:layout_width="match_parent"

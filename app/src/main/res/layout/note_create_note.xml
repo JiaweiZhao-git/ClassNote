@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginBottom="16dp"
     android:orientation="vertical"
-    android:layout_margin="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/note_create_title_bar"/>
+
     <EditText
         android:id="@+id/createnote_title"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="请输入标题"/>
 
     <EditText
         android:id="@+id/createnote_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/createnote_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="写笔记..."

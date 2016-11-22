@@ -11,7 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dlut.justeda.classnote.R;
 import com.dlut.justeda.classnote.note.activity.NoteListActivity;
@@ -35,6 +38,9 @@ public class NoteFragment extends Fragment {
     private List<NoteItem> noteList = new ArrayList<>();
     private static final int CHOOSE_PHOTO=3;
 
+    private ImageButton title_button;
+    private TextView title_text;
+
     private ClassDatabaseHelper dbHelper;
 
     private int IMAGE01 = R.drawable.note_class01;
@@ -50,8 +56,12 @@ public class NoteFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.note_fragment_main, container,false);
         listView = (ListView) view.findViewById(R.id.note_main_courselist);
+        title_button = (ImageButton) view.findViewById(R.id.title_left_image);
+        title_text = (TextView) view.findViewById(R.id.title_middle_text);
         initViews();
 
         initEvents();
@@ -60,9 +70,11 @@ public class NoteFragment extends Fragment {
     }
 
     private void initViews() {
+
+        title_text.setText("课堂笔记");
         noteList.add(new NoteItem("相册管理", R.drawable.note_album));
         noteList.add(new NoteItem("QQ文件管理",R.drawable.note_qq));
-        noteList.add(new NoteItem("其它",R.drawable.note_item));
+        noteList.add(new NoteItem("其他",R.drawable.note_item));
         //需要添加其它课程信息
         dbHelper = new ClassDatabaseHelper(getContext(), "Courses.db", null, 2);
         addFromDB();
@@ -84,6 +96,13 @@ public class NoteFragment extends Fragment {
     }
 
     private void initEvents() {
+
+        title_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity().getBaseContext(),"back",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         noteAdapter = new NoteAdapter(getContext(), noteList);
         listView.setAdapter(noteAdapter);

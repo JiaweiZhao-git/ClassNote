@@ -16,10 +16,16 @@ import okhttp3.OkHttpClient;
  */
 
 public class App extends Application {
+
     public static Bitmap avatarBitmap;
+    private static App instance;
+    public static App getInstance(){
+        return instance;
+    }
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         avatarBitmap= BitmapFactory.decodeResource(getResources(),R.drawable.share_defaultavatar);
         final CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(getApplicationContext()));
         OkHttpClient okHttpClient = new OkHttpClient.Builder()

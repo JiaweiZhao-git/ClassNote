@@ -1,19 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
-    <lib.homhomlib.design.SlidingLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/notelist_slidinglayout"
-        android:clickable="true"
+    <RelativeLayout
+        android:id="@+id/note_list_title_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:sliding_pointer_mode="more"
-        app:sliding_mode="both"
-        app:background_view="@layout/note_view_bg"
-        android:background="@color/bg_white">
+        android:layout_height="48dp"
+        android:background="@color/main_blue">
+
+        <TextView
+            android:id="@+id/note_list_title_bar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="课程"
+            android:textColor="@color/font_write"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <lib.homhomlib.design.SlidingLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/notelist_slidinglayout"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:sliding_pointer_mode="more"
+            app:sliding_mode="both"
+            app:background_view="@layout/note_view_bg"
+            android:background="@color/bg_white">
 
             <ListView
                 android:id="@+id/note_fragment_pictures_list"
@@ -23,8 +45,11 @@
                 android:divider="#00000000"
                 ></ListView>
 
-    </lib.homhomlib.design.SlidingLayout>
+        </lib.homhomlib.design.SlidingLayout>
 
-    <include layout="@layout/note_list_arcmenu"/>
+        <include layout="@layout/note_list_arcmenu"/>
+    </RelativeLayout>
 
-</RelativeLayout>
+
+
+</LinearLayout>

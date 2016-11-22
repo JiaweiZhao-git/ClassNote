@@ -215,5 +215,83 @@ public class ClassTime {
         }
     }
 
+    public String getWeekName(String date){
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(format.parse(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int weekOfYear = c.get(Calendar.WEEK_OF_YEAR)-36;
+        switch (weekOfYear) {
+            case 1:
+                return "第一周";
+            case 2:
+                return "第二周";
+            case 3:
+                return "第三周";
+            case 4:
+                return "第四周";
+            case 5:
+                return "第五周";
+            case 6:
+                return "第六周";
+            case 7:
+                return "第七周";
+            case 8:
+                return "第八周";
+            case 9:
+                return "第九周";
+            case 10:
+                return "第十周";
+            case 11:
+                return "第十一周";
+            case 12:
+                return "第十二周";
+            case 13:
+                return "第十三周";
+            case 14:
+                return "第十四周";
+            case 15:
+                return "第十五周";
+            case 16:
+                return "第十六周";
+            case 17:
+                return "第十七周";
+            case 18:
+                return "第十八周";
+            default:
+                return "某一周";
+        }
+    }
 
+    public String getWeekDayName(String date){
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(format.parse(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int dayForWeek = c.get(Calendar.DAY_OF_WEEK);
+        switch (dayForWeek) {
+            case 1:
+                return "星期一";
+            case 2:
+                return "星期二";
+            case 3:
+                return "星期三";
+            case 4:
+                return "星期四";
+            case 5:
+                return "星期五";
+            case 6:
+                return "星期六";
+            case 7:
+                return "星期日";
+            default:
+                return "某一天";
+        }
+    }
 }

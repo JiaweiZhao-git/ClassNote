@@ -30,7 +30,7 @@
         <activity android:name=".justpublic.activity.LeftLogin"/>
         <activity android:name=".share.activity.ShareCommentActivity"/>
         <activity android:name=".share.activity.SharePublishActivity"/>
-
+        <activity android:name=".note.activity.NoteListForChoose"/>
     </application>
 
 </manifest>
