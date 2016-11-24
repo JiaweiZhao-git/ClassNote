@@ -4,6 +4,9 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.DocumentsContract;
@@ -28,7 +31,7 @@ public class OpenPhotoAlbum {
 
     private Intent data;
     private Context context;
-    private String path = "";
+    private String path = "其他";
 
     public OpenPhotoAlbum(Context context,Intent data){
         this.context = context;
@@ -37,16 +40,16 @@ public class OpenPhotoAlbum {
 
 
     /**
-     * 用于头像的选择
+     * 修改头像
+     * 放在default文件夹下
      */
-
-    public void handleIamgeOnKitKatForUserImage(String defaultName){
+    public Bitmap handleIamgeOnKitKatForUserImage(){
         String imagePath=null;
+        path = "default";
         Uri uri=data.getData();
         if(DocumentsContract.isDocumentUri(context, uri)){
 
             String docId=DocumentsContract.getDocumentId(uri);
-
             if("com.android.providers.media.documents".equals(
                     uri.getAuthority())){
                 String id=docId.split(":")[1];
@@ -62,7 +65,7 @@ public class OpenPhotoAlbum {
         }else if("content".equalsIgnoreCase(uri.getScheme())){
             imagePath=getImagePath(uri, null);
         }
-        displayImage(imagePath);
+       return displayUserImage(imagePath);
     }
 
     /**
@@ -121,8 +124,10 @@ public class OpenPhotoAlbum {
      */
     private void displayImage(String imagePath) {
         String src=imagePath;
-        String dest= Environment.getExternalStorageDirectory().getAbsolutePath()+ "/ClassNote/其它/"+"NoteIsFromCamera.jpg";
-
+        ClassTime classTime = new ClassTime();
+        String dest= Environment.getExternalStorageDirectory().getAbsolutePath()+ "/ClassNote/"+path+"/IMG_"+classTime.getDate()+".jpg";
+        BitmapUtil bitmapUtil = new BitmapUtil();
+        bitmapUtil.renamePictures("其他",Environment.getExternalStorageDirectory().getAbsolutePath()+ "/ClassNote/"+path+"/");
         try {
             copyFile(src,dest);
             //再添加一个压缩照片的
@@ -130,6 +135,66 @@ public class OpenPhotoAlbum {
 
             e.printStackTrace();
         }
+    }
+
+    private Bitmap displayUserImage(String imagePath) {
+        String src = imagePath;
+        String dest = Environment.getExternalStorageDirectory().getAbsolutePath()+"/ClassNote/default/default.png";
+        Bitmap bitmap = getDiskBitmap(imagePath);
+        File file = new File(dest);
+        Bitmap defaultBitmap = zoomImage(bitmap, 100, 100);
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            if (defaultBitmap.compress(Bitmap.CompressFormat.PNG, 80, out)) {
+                out.flush();
+                out.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return defaultBitmap;
+    }
+
+    /***
+     * 图片的缩放方法
+     *
+     * @param bgimage
+     *            ：源图片资源
+     * @param newWidth
+     *            ：缩放后宽度
+     * @param newHeight
+     *            ：缩放后高度
+     * @return
+     */
+    public static Bitmap zoomImage(Bitmap bgimage, double newWidth,
+                                   double newHeight) {
+        // 获取这个图片的宽和高
+        float width = bgimage.getWidth();
+        float height = bgimage.getHeight();
+        // 创建操作图片用的matrix对象
+        Matrix matrix = new Matrix();
+        // 计算宽高缩放率
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+        // 缩放图片动作
+        matrix.postScale(scaleWidth, scaleHeight);
+        Bitmap bitmap = Bitmap.createBitmap(bgimage, 0, 0, (int) width,
+                (int) height, matrix, true);
+        return bitmap;
+    }
+
+
+    private Bitmap getDiskBitmap(String pathString){
+        Bitmap bitmap = null;
+        try {
+            File file = new File(pathString);
+            if(file.exists()) {
+                bitmap = BitmapFactory.decodeFile(pathString);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return bitmap;
     }
 
     /**

@@ -123,7 +123,8 @@ public class LeftLogin extends Activity {
                         break;
                     case 1:
                         alertDialog.dismiss();
-                        startActivity(new Intent(LeftLogin.this,MainActivity.class));
+                        Intent intent1 = new Intent(LeftLogin.this, MainActivity.class);
+                        startActivity(intent1);
                 }
                 super.handleMessage(msg);
             }

@@ -22,6 +22,10 @@
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/share_commet_send"
+            android:background="@drawable/round"
+            android:text="发送"
+            android:textColor="@color/font_write"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

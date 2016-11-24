@@ -2,11 +2,179 @@
 <items version="2" >
 
     <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.zhy\okhttputils\2.6.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="155fef2600f48631a9e9665c0873743b6d24e324">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.zhy-okhttputils-2.6.2_10ebdf88d88fa8e7268524b7127927fb7e4ade5e\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0-alpha2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="32ab8bede8cd600f25a5bb3fe15068c81c8910dc">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.0.0-alpha2_2181d4d55098f7017fa95de479de8a25285c71bd\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\赵佳伟\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.3.1_869595f037009b8a7c5277bd41d677f221972b83\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\SDK\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_ef1ea591ad7877c054633e3d53062b4dc773194d\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\cn.bmob.android\bmob-sdk\3.5.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="e47f10299673ab68f24c595f96b18086cc9a8384">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\cn.bmob.android-bmob-sdk-3.5.0_8039bd3b80d3a694d9bcf9e38261d06d620394b9\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="156920b01e5f3da5ea3768217b3b7cafa1248fc9">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_5c4bc93d57086f1b218642c33270962440968f2d\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.github.ValuesFeng\ResoCamera\0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="bf811f2ffb79b90181077fb7736486eb7879a60c">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.ValuesFeng-ResoCamera-0.1_41a92fd4bf1240c5e57d390407d78210a7d4f2de\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\赵佳伟\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.4.2\ccde00f7ccc77af5a6d5752e2cb21f6d8998289f\okhttp-3.4.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ccde00f7ccc77af5a6d5752e2cb21f6d8998289f">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.4.2_a17d663854f1761bd319429785b97bb00c15afb3\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\cn.bmob.android\bmob-sdk\3.5.0\jars\libs\rxandroid-1.2.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="19beef6debb6a22febc28777464c71bfccbafe3d">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\rxandroid-1.2.0_f379da30db40d81b81895118fd2cc22a410b5275\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-24.2.1_fc16c03ba1f02c0053f533c11ee50aba55711e63\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\homhomlin.lib\sldinglayout\0.9.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="f1d31d4efd059352ebe46a3266954a59f41db52a">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\homhomlin.lib-sldinglayout-0.9.0_54a6e58e66d082b24c15d57d4c9c9d48dcd30f13\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.0.0-alpha2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="df7f6513d6e2aaa302bbac654807c6129b517090">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.0.0-alpha2_0ca2b21c42fe4eeb481c823c173bf35da9bf21f1\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0-alpha2\jars\libs\internal_impl-24.0.0-alpha2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="e460bc069dfd21d22770cf2a2370c9021b9c98a2">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0-alpha2_6a4a801a437402228ca689beedc6ae37fa73fb7b\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\cn.bmob.android\bmob-sdk\3.5.0\jars\libs\okio-1.7.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="bbeca71da43c8f4bc9ceedec002060f53437ad26">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.7.0_4889d9af73bbbe305417f483fd3aa5cdec5c39dc\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.0.0-alpha2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="661a632c3b434991d6364690cbe0f786371101cc">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.0.0-alpha2_e5cb61868c3325cc0ef09fa68ab3692b8720ce88\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.bm.photoview\library\1.4.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="772452261af8eb9c1df9ae71fb621afe393277da">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.bm.photoview-library-1.4.1_d3961074c215e260eabac7eaacc2e142cdb1f43f\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\cn.bmob.android\bmob-sdk\3.5.0\jars\libs\okhttp-3.3.1.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="e7cb33d9f82d3b8521c6594b180f4dd9fc6d49f2">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.3.1_75294598f02ca8ce6db6c0d89da7ea391cd633bc\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\赵佳伟\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.11.0_36abe33288713312cb0de58bf601e7e5923cc6c4\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.0.0-alpha2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="bf5aa3b026d5b5fd9f4ab5e8cf13499b9e016dfb">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.0.0-alpha2_ac438199be425890fb1650b26c92aab8539ee198\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\cn.bmob.android\bmob-sdk\3.5.0\jars\libs\BmobSDK_3.5.0_20160630.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8eb5c605a02f792e326c5ac8e4feb2c18dd171ad">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\BmobSDK_3.5.0_20160630_1f6f07ec3627baf2d90482c39028aadd83b7a06f\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\cn.bmob.android\bmob-sdk\3.5.0\jars\libs\rxjava-1.1.6.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ac615240b277e7fd3950d7b35f73b733f310cede">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\rxjava-1.1.6_e97c8d699e3ab693923deede16f6554cc9f3911a\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\cn.bmob.android\bmob-sdk\3.5.0\jars\libs\gson-2.6.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="dd625f5e7bba8235782b5dc4244c3fd26953190f">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.6.2_82c0def03d258927621b8d3480b8bd50396a8113\classes.dex" />
+    </item>
+    <item
         jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="0e5ab8f6a6930791f8189a32d693fc5170c943fd">
+        sha1="1b6c4134fb8046903af0b1ea2a386ce7a2955df6">
         <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_c2d417384aade7005f39c6437e33032be6282cfc\classes.dex" />
+    </item>
+    <item
+        jar="E:\androidstudio\workplace\ClassNote\app\build\intermediates\exploded-aar\com.makeramen\roundedimageview\2.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="814fc0c3ec69a944add398217d90077301501a74">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.makeramen-roundedimageview-2.2.1_f141c3e6b620bfc422d1acd705428cc21868dc86\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\赵佳伟\.gradle\caches\modules-2\files-2.1\com.nostra13.universalimageloader\universal-image-loader\1.9.5\442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375\universal-image-loader-1.9.5.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375">
+        <dex dex="E:\androidstudio\workplace\ClassNote\app\build\intermediates\transforms\dex\debug\folders\1000\10\universal-image-loader-1.9.5_55a46db77c79f21040c598dd53ecc55e9c72f0be\classes.dex" />
     </item>
 
 </items>

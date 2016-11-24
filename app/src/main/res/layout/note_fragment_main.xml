@@ -8,6 +8,8 @@
    <include layout="@layout/note_title_bar"/>
 
    <ListView
+       android:layout_marginTop="5dp"
+       android:layout_marginLeft="5dp"
        android:id="@+id/note_main_courselist"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"

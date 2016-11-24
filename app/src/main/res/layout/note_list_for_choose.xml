@@ -13,15 +13,15 @@
 
         <ImageButton
             android:id="@+id/note_list_for_choose_back"
-            android:layout_width="wrap_content"
+            android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:background="@drawable/ic_launcher"/>
+            android:background="@drawable/logo"/>
 
         <TextView
             android:id="@+id/note_list_for_choose_text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="請選擇照片..."
+            android:text="请选择照片..."
             android:textColor="@color/font_write"
             android:textSize="20sp"
             android:layout_centerInParent="true"

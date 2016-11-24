@@ -3,6 +3,7 @@ package com.dlut.justeda.classnote.justpublic.contralwidget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -110,12 +111,22 @@ public class SlidingMenu extends HorizontalScrollView {
                 int scrollX = getScrollX();
                 if(scrollX>=mMenuWidth/2){
                     this.smoothScrollTo(mMenuWidth,0);
+                    Log.e("slidingmenu", "left");
                 }else{
                     this.smoothScrollTo(0,0);
                 }
                 return true;
         }
         return super.onTouchEvent(ev);
+    }
+
+    public void toLeft(boolean left) {
+        if (left) {
+            this.smoothScrollTo(mMenuWidth,0);
+        }else{
+            this.smoothScrollTo(0,0);
+        }
+
     }
 
     @Override

@@ -39,6 +39,7 @@
 
     <EditText
         android:id="@+id/studentPassword"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="40dip"
         android:paddingLeft="50dip"
@@ -51,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="密码"
+
         android:textSize="8pt"
         android:textColor="@android:color/darker_gray"
         android:layout_alignLeft="@id/studentPassword"

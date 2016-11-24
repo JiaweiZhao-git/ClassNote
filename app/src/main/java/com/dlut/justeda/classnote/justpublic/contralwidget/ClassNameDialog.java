@@ -49,7 +49,7 @@ public class ClassNameDialog {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);
-        builder.setIcon(R.drawable.ic_launcher);
+        builder.setIcon(R.drawable.logo);
         final String[] items = new String[sum+1];
         items[0]="其他";
         for(int i=1;i<sum+1;i++) {
@@ -84,7 +84,7 @@ public class ClassNameDialog {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);
-        builder.setIcon(R.drawable.ic_launcher);
+        builder.setIcon(R.drawable.logo);
         final String[] items = new String[sum+1];
         items[0]="其他";
         for(int i=1;i<sum+1;i++) {
@@ -119,7 +119,7 @@ public class ClassNameDialog {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);
-        builder.setIcon(R.drawable.ic_launcher);
+        builder.setIcon(R.drawable.logo);
         final String[] items = new String[sum+1];
         items[0]="其他";
         for(int i=1;i<sum+1;i++) {
@@ -161,7 +161,7 @@ public class ClassNameDialog {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);
-        builder.setIcon(R.drawable.ic_launcher);
+        builder.setIcon(R.drawable.logo);
         final String[] items = new String[sum+1];
         items[0]="其他";
         for(int i=1;i<sum+1;i++) {

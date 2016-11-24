@@ -8,9 +8,9 @@
     <ImageButton
         android:id="@+id/title_left_image"
         android:layout_centerVertical="true"
-        android:layout_width="42dp"
-        android:layout_height="32dp"
-        android:background="@drawable/note_title_bar_left_image"/>
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:background="@drawable/note_title_bar_toleft"/>
 
     <TextView
         android:id="@+id/title_middle_text"

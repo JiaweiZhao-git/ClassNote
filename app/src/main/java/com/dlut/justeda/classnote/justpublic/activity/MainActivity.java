@@ -1,6 +1,9 @@
 package com.dlut.justeda.classnote.justpublic.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -12,14 +15,17 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dlut.justeda.classnote.R;
+import com.dlut.justeda.classnote.justpublic.contralwidget.ClassNameDialog;
 import com.dlut.justeda.classnote.justpublic.contralwidget.SlidingMenu;
 import com.dlut.justeda.classnote.justpublic.fragment.CameraFragment;
 import com.dlut.justeda.classnote.justpublic.fragment.IOnFocusListenable;
 import com.dlut.justeda.classnote.justpublic.fragment.NoteFragment;
 import com.dlut.justeda.classnote.justpublic.fragment.ShareFragment;
 import com.dlut.justeda.classnote.justpublic.util.FileUtil;
+import com.dlut.justeda.classnote.justpublic.util.Zip;
 import com.dlut.justeda.classnote.note.util.BitmapUtil;
 import com.dlut.justeda.classnote.note.util.ClassTime;
 import com.dlut.justeda.classnote.note.util.OpenPhotoAlbum;
@@ -78,6 +84,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private ClassTime classTime;
 
     private String className = null;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +114,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         mSlidingMenu = (SlidingMenu) findViewById(R.id.slidingmenu);
         user_name = (TextView) mSlidingMenu.findViewById(R.id.main_left_user_name);
+        sharedPreferences=getSharedPreferences("user", Context.MODE_PRIVATE);
+        String name=sharedPreferences.getString("name","点击登陆");
+        user_name.setText(name);
         user_name.setOnClickListener(this);
 
         user_image = (RoundedImageView) mSlidingMenu.findViewById(R.id.main_left_user_default_image);
@@ -149,7 +159,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
 
-
+    public SlidingMenu getmSlidingMenu() {
+        return this.mSlidingMenu;
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -169,6 +181,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.main_left_pop_file:
                 //开个接口用来选择课程，然后执行异步压缩操作
+                ClassNameDialog classNameDialog = new ClassNameDialog();
+                final String name = classNameDialog.getClassNameOnly(view, "选择要压缩的课程笔记", MainActivity.this, MainActivity.this);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Zip.createZip(Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassNote/" + name);
+                    }
+                }).start();
+                Toast.makeText(MainActivity.this,"成功压缩~",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.main_left_user_favorite:
                 startActivity(new Intent(MainActivity.this,FailLoadingActivity.class));
@@ -306,7 +327,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         switch (requestCode) {
             case 250:
                 OpenPhotoAlbum openPhotoAlbum = new OpenPhotoAlbum(MainActivity.this, data);
-                openPhotoAlbum.handleImageOnKitKat();
+                Bitmap bitmap = openPhotoAlbum.handleIamgeOnKitKatForUserImage();
+                user_image.setImageBitmap(bitmap);
                 break;
         }
     }

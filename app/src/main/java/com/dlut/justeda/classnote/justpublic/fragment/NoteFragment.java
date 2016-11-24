@@ -14,9 +14,9 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dlut.justeda.classnote.R;
+import com.dlut.justeda.classnote.justpublic.contralwidget.SlidingMenu;
 import com.dlut.justeda.classnote.note.activity.NoteListActivity;
 import com.dlut.justeda.classnote.note.db.ClassDatabaseHelper;
 import com.dlut.justeda.classnote.note.noteadapter.NoteAdapter;
@@ -32,6 +32,8 @@ import java.util.Random;
  * Created by 赵佳伟 on 2016/11/9.
  */
 public class NoteFragment extends Fragment {
+
+    private SlidingMenu slidingMenu;
 
     private ListView listView;
     public static NoteAdapter noteAdapter;
@@ -51,7 +53,7 @@ public class NoteFragment extends Fragment {
 
     private int IMAGE[] = {IMAGE01, IMAGE02, IMAGE03, IMAGE04, IMAGE05};
 
-
+    private boolean isLeft = false;
 
     @Nullable
     @Override
@@ -59,6 +61,9 @@ public class NoteFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.note_fragment_main, container,false);
+
+        slidingMenu = (SlidingMenu) getActivity().findViewById(R.id.slidingmenu);
+
         listView = (ListView) view.findViewById(R.id.note_main_courselist);
         title_button = (ImageButton) view.findViewById(R.id.title_left_image);
         title_text = (TextView) view.findViewById(R.id.title_middle_text);
@@ -69,11 +74,11 @@ public class NoteFragment extends Fragment {
         return view;
     }
 
+
     private void initViews() {
 
         title_text.setText("课堂笔记");
         noteList.add(new NoteItem("相册管理", R.drawable.note_album));
-        noteList.add(new NoteItem("QQ文件管理",R.drawable.note_qq));
         noteList.add(new NoteItem("其他",R.drawable.note_item));
         //需要添加其它课程信息
         dbHelper = new ClassDatabaseHelper(getContext(), "Courses.db", null, 2);
@@ -100,7 +105,8 @@ public class NoteFragment extends Fragment {
         title_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity().getBaseContext(),"back",Toast.LENGTH_SHORT).show();
+                slidingMenu.toLeft(isLeft);
+                isLeft = !isLeft;
             }
         });
 
@@ -112,7 +118,7 @@ public class NoteFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 /**
                  * 1、第一个是相册管理
-                 * 2、第二个是qq文件管理——这个真的还要吗？qq文件和本身的文件格式不一样
+                 * 2、第二个是qq文件管理——暂时去掉
                  * 3、第三个是其他文件夹
                  */
                 if (position == 0) {
@@ -120,9 +126,7 @@ public class NoteFragment extends Fragment {
                             "android.intent.action.GET_CONTENT");
                     intent.setType("image/*");
                     startActivityForResult(intent, CHOOSE_PHOTO);
-                } else if (position == 1) {
-                    //暂时不会处理qq，应该是找响应的文件夹
-                }else{
+                } else{
                     Intent intent = new Intent(getContext(), NoteListActivity.class);
                     intent.putExtra("name",noteList.get(position).getName());
                     startActivity(intent);

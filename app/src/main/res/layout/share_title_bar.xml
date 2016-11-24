@@ -12,14 +12,16 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textColor="@color/font_write"
         android:text="资源共享"/>
 
     <ImageButton
         android:id="@+id/share_title_add"
         android:layout_alignParentRight="true"
-        android:layout_width="48dp"
-        android:layout_height="match_parent"
-        android:background="@mipmap/ic_launcher"/>
+        android:layout_centerVertical="true"
+        android:layout_marginRight="2dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/share_title_bar_add"/>
 </RelativeLayout>
