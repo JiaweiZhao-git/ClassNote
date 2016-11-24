@@ -16,7 +16,6 @@ import okhttp3.OkHttpClient;
  */
 
 public class App extends Application {
-
     public static Bitmap avatarBitmap;
     private static App instance;
     public static App getInstance(){

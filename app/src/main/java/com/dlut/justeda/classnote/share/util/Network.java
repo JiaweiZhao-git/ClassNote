@@ -96,8 +96,8 @@ public class Network {
                         JsonuserInfo jsonuserInfo=new Gson().fromJson(response,JsonuserInfo.class);
                         Data.username=jsonuserInfo.username;
                         Data.avatarurl=jsonuserInfo.avatar;
-                        Log.e(" Data.username",Data.username);
-                        Log.e(" Data.username",Data.avatarurl);
+//                        Log.e(" Data.username",Data.username);
+//                        Log.e(" Data.username",Data.avatarurl);
                     }
                 });
     }

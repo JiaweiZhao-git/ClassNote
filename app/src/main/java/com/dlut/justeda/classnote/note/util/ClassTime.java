@@ -3,6 +3,7 @@ package com.dlut.justeda.classnote.note.util;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.dlut.justeda.classnote.note.db.ClassDatabaseHelper;
 
@@ -55,8 +56,11 @@ public class ClassTime {
      * @return
      */
     public String getClassName(Context context,String date) {
+        Log.e("getClassName", date);
         int WeekDay = getWeekDay(date);
+        Log.e("getClassName", String.valueOf(WeekDay));
         int Section = getSection(date.substring(date.length() - 4));
+        Log.e("getClassName", String.valueOf(Section));
         String selectionArgs[] = {String.valueOf(WeekDay), String.valueOf(Section)};
         dbHelper = new ClassDatabaseHelper(context,"Courses.db", null, 2);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -64,18 +68,22 @@ public class ClassTime {
         Cursor secondCursor = db.rawQuery("select * from Courses where weekday2=? and section2=?", selectionArgs);
         Cursor thirdCursor = db.rawQuery("select * from Courses where weekday3=? and section3=?", selectionArgs);
         if (cursor.getCount() == 0 && secondCursor.getCount() == 0 && thirdCursor.getCount() == 0) {
+            Log.e("getClassName", "qita");
             return "其他";
         } else if (cursor.getCount() != 0) {
             String name = "其他";
-            queryFromCursor(cursor,date);
+            name = queryFromCursor(cursor,date);
+            Log.e("getClassName---cursor", name);
             return name;
         } else if (secondCursor.getCount() != 0) {
             String name = "其他";
-            queryFromCursor(secondCursor,date);
+            name = queryFromCursor(secondCursor,date);
+            Log.e("getClassName---second", name);
             return name;
         } else if (thirdCursor.getCount() != 0) {
             String name = "其他";
-            queryFromCursor(thirdCursor,date);
+            name = queryFromCursor(thirdCursor,date);
+            Log.e("getClassName---third", name);
             return name;
         }else{
             return "其他";
@@ -177,7 +185,7 @@ public class ClassTime {
             e.printStackTrace();
         }
         int dayForWeek = c.get(Calendar.DAY_OF_WEEK);
-        return dayForWeek;
+        return dayForWeek-1;
 //        switch (dayForWeek) {
 //            case 1:
 //                return "星期一";
@@ -276,19 +284,19 @@ public class ClassTime {
         }
         int dayForWeek = c.get(Calendar.DAY_OF_WEEK);
         switch (dayForWeek) {
-            case 1:
+            case 0:
                 return "星期一";
-            case 2:
+            case 1:
                 return "星期二";
-            case 3:
+            case 2:
                 return "星期三";
-            case 4:
+            case 3:
                 return "星期四";
-            case 5:
+            case 4:
                 return "星期五";
-            case 6:
+            case 5:
                 return "星期六";
-            case 7:
+            case 6:
                 return "星期日";
             default:
                 return "某一天";

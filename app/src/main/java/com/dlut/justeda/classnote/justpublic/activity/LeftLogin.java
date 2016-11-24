@@ -1,16 +1,20 @@
 package com.dlut.justeda.classnote.justpublic.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.dlut.justeda.classnote.R;
@@ -20,6 +24,7 @@ import com.dlut.justeda.classnote.note.util.HttpCallbackListener;
 import com.dlut.justeda.classnote.note.util.HttpUtil;
 import com.dlut.justeda.classnote.note.util.Lesson;
 import com.dlut.justeda.classnote.note.util.StudentBean;
+import com.dlut.justeda.classnote.share.util.Network;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -40,10 +45,12 @@ public class LeftLogin extends Activity {
     private String pwd;
     private Button submit;
     private HttpUtil httpUtil;
-    private ProgressBar mProgressBar;
     private ClassDatabaseHelper dbHelper;
     private SQLiteDatabase db;
     private FileUtil fileUtil;
+    private  AlertDialog alertDialog;
+    private android.os.Handler handler;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +62,39 @@ public class LeftLogin extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HttpTask httpTask = new HttpTask();
-                httpTask.execute();
+                alertDialog=new ProgressDialog(LeftLogin.this);
+                alertDialog.setMessage("正在登陆，请稍等....");
+                alertDialog.show();
+                alertDialog.setCancelable(false);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        num =number.getText().toString().trim();
+                        pwd = password.getText().toString().trim();
+                        httpUtil.login(num,pwd, new HttpCallbackListener() {
+                            @Override
+                            public void onFinish(String reponse) {
+                                if (reponse.contains("none")) {
+                                    handler.sendEmptyMessage(0);
+                                }else{
+                                    parseJsonWithGSON(reponse);
+                                    handler.sendEmptyMessage(1);
+                                    SharedPreferences.Editor editor=  getSharedPreferences("user",MODE_PRIVATE).edit();
+                                    editor.putString("name",number.getText().toString());
+                                    editor.putString("password",password.getText().toString());
+                                    Network.register(number.getText().toString(),password.getText().toString());
+                                    editor.commit();
+                                }
+
+                            }
+
+                            @Override
+                            public void onError(String e) {
+                                handler.sendEmptyMessage(-1);
+                            }
+                        });
+                    }
+                }).start();
             }
         });
 
@@ -68,54 +106,31 @@ public class LeftLogin extends Activity {
         password = (EditText) findViewById(R.id.studentPassword);
         submit = (Button) findViewById(R.id.loginButton);
         httpUtil = new HttpUtil();
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-
         dbHelper = new ClassDatabaseHelper(this, "Courses.db", null, 2);
         db = dbHelper.getWritableDatabase();
-
+        handler=new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what){
+                    case -1:
+                        alertDialog.dismiss();
+                        Toast.makeText(LeftLogin.this,"check network",Toast.LENGTH_SHORT).show();
+                    case 0:
+                        alertDialog.dismiss();
+                        Toast.makeText(LeftLogin.this,"login failure",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        alertDialog.dismiss();
+                        startActivity(new Intent(LeftLogin.this,MainActivity.class));
+                }
+                super.handleMessage(msg);
+            }
+        };
         fileUtil = new FileUtil();
     }
-
-    class HttpTask extends AsyncTask<String,Void,Void>{
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            num =number.getText().toString().trim();
-            pwd = password.getText().toString().trim();
-            Log.e(getLocalClassName(), "pre");
-            mProgressBar.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected Void doInBackground(String... strings) {
-            httpUtil.login(num,pwd, new HttpCallbackListener() {
-                @Override
-                public void onFinish(String reponse) {
-                    parseJsonWithGSON(reponse);
-                }
-
-                @Override
-                public void onError(String e) {
-                    Toast.makeText(LeftLogin.this,e,Toast.LENGTH_SHORT).show();
-                }
-            });
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            Log.e(getLocalClassName(), "post");
-            mProgressBar.setVisibility(View.GONE);
-        }
-
-    }
-
     private void parseJsonWithGSON(String reponse) {
         Gson gson = new Gson();
-        List<StudentBean> beanList = gson.fromJson(reponse, new TypeToken<List<StudentBean>>() {
-        }.getType());
-
+        List<StudentBean> beanList = gson.fromJson(reponse, new TypeToken<List<StudentBean>>(){}.getType());
         ContentValues values = new ContentValues();
         Cursor cursor = db.rawQuery("select * from Courses", null);
         if (cursor.getCount() == 0) {

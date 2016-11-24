@@ -11,10 +11,6 @@ import android.widget.TextView;
 
 import com.dlut.justeda.classnote.R;
 import com.dlut.justeda.classnote.share.message.CommentMeg;
-import com.dlut.justeda.classnote.share.util.Constant;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.util.List;
 
@@ -62,8 +58,6 @@ public class ShareCommentAdapter extends BaseAdapter {
         viewHolder.commentcontent.setText(list.get(position).commentcontent);
         viewHolder.commentername.setText(list.get(position).commentername);
         Log.e("commenteravatarurl",list.get(position).commenteravatarurl);
-        //Constant.imageLoader.displayImage(list.get(position).commenteravatarurl,viewHolder.commentavatar,Constant.options);
-        //图片的操作
         return convertView;
     }
     public  static class ViewHolder{

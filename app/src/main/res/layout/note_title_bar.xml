@@ -7,9 +7,10 @@
 
     <ImageButton
         android:id="@+id/title_left_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_launcher"/>
+        android:layout_centerVertical="true"
+        android:layout_width="42dp"
+        android:layout_height="32dp"
+        android:background="@drawable/note_title_bar_left_image"/>
 
     <TextView
         android:id="@+id/title_middle_text"

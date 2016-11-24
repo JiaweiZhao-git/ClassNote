@@ -24,7 +24,6 @@ public class BitmapUtil {
 
     /**
      * 用于将本地指定的url指向的图片转成bitmap
-     * @param url
      * @return bitmap
      */
     public Bitmap getLoacalBitmap(String url){
@@ -38,6 +37,25 @@ public class BitmapUtil {
         }
 
     }
+
+    /**
+     * 用於share界面額照片壓縮
+     * 大概是原大小的三分之一
+     * @param path
+     * @return
+     *
+    public Bitmap comPressForShare(String path) {
+        Bitmap bitmap = getLoacalBitmap(path);
+        try {
+            if (bitmap.compress(Bitmap.CompressFormat.JPEG, 80, out)) {
+                return bitmap;
+            }else{
+                return bitmap;
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
 
     /**
      * 刚拍的照片由于用了依赖引入，照片名字和我想要的不一样

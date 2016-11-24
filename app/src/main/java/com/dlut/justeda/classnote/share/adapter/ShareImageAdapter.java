@@ -27,6 +27,8 @@ public class ShareImageAdapter extends BaseAdapter implements View.OnClickListen
     private Context context;
     private LayoutInflater layoutInflater;
     private List<TopicMeg> list;
+    private ViewHolder viewHolder=null;
+    private boolean islike=false;
     public ShareImageAdapter(Context context, List<TopicMeg> list) {
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
@@ -50,7 +52,6 @@ public class ShareImageAdapter extends BaseAdapter implements View.OnClickListen
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder=null;
         if(convertView==null){
             convertView=layoutInflater.inflate(R.layout.share_layout_item,null);
             viewHolder=new ViewHolder();
@@ -79,7 +80,7 @@ public class ShareImageAdapter extends BaseAdapter implements View.OnClickListen
         });
         viewHolder.praise_imag.setOnClickListener(this);
         //对头像和照片的处理
-       // Constant.imageLoader.displayImage(list.get(position).avatarurl,viewHolder.myavatar,Constant.options);
+        // Constant.imageLoader.displayImage(list.get(position).avatarurl,viewHolder.myavatar,Constant.options);
         Constant.imageLoader.displayImage(list.get(position).imageUrl,viewHolder.shareimg,Constant.options);
         return convertView;
     }
@@ -88,6 +89,13 @@ public class ShareImageAdapter extends BaseAdapter implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.share_imag_praise:
+                if(!islike){
+                    viewHolder.praise_imag.setImageResource(R.drawable.share_praise_click);
+                    islike=true;
+                }else {
+                    viewHolder.praise_imag.setImageResource(R.drawable.share_praise_unclick);
+                    islike=false;
+                }
                 break;
         }
     }

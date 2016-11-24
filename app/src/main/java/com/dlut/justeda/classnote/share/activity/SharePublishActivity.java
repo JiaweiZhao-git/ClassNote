@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.dlut.justeda.classnote.R;
@@ -24,7 +24,7 @@ import java.io.File;
  */
 
 public class SharePublishActivity extends Activity implements View.OnClickListener{
-    private Button button_back,button_publish;
+    private ImageButton button_back,button_publish;
     private EditText publish_content;
     private ImageView publish_img;
     private String topcontent;
@@ -38,8 +38,8 @@ public class SharePublishActivity extends Activity implements View.OnClickListen
     }
 
     private void initUI() {
-        button_back= (Button) findViewById(R.id.share_publish_back);
-        button_publish= (Button) findViewById(R.id.share_publish_publish);
+        button_back= (ImageButton) findViewById(R.id.share_publish_title_back);
+        button_publish= (ImageButton) findViewById(R.id.share_publish_title_send);
         publish_content= (EditText) findViewById(R.id.share_publish_content);
         publish_img= (ImageView) findViewById(R.id.share_public_img);
         button_back.setOnClickListener(this);
@@ -52,11 +52,11 @@ public class SharePublishActivity extends Activity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.share_publish_back:
+            case R.id.share_publish_title_back:
                 this.finish();
                 break;
 
-            case R.id.share_publish_publish:
+            case R.id.share_publish_title_send:
                 topcontent=publish_content.getText().toString();
                 if(!TextUtils.isEmpty(topcontent)){
                     Data.getTopicMeglist().add(0,new TopicMeg(Data.avatarurl,"",topcontent,Data.username));
@@ -69,7 +69,7 @@ public class SharePublishActivity extends Activity implements View.OnClickListen
 
                 break;
             case R.id.share_public_img:
-                classNameDialog.showClassNameListDialog(v,SharePublishActivity.this,SharePublishActivity.this);
+                classNameDialog.showClassNameListDialog(v,"請選擇課程：",SharePublishActivity.this,SharePublishActivity.this);
                 break;
         }
     }

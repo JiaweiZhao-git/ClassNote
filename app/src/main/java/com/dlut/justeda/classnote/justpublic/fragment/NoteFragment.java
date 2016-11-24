@@ -34,7 +34,7 @@ import java.util.Random;
 public class NoteFragment extends Fragment {
 
     private ListView listView;
-    private NoteAdapter noteAdapter;
+    public static NoteAdapter noteAdapter;
     private List<NoteItem> noteList = new ArrayList<>();
     private static final int CHOOSE_PHOTO=3;
 

@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content" />
                 <ImageView
                     android:id="@+id/share_share_image"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="2dp"
                     android:src="@mipmap/ic_launcher"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -66,21 +66,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:id="@+id/share_imag_share"
                     android:src="@drawable/share_share"
                     android:layout_alignParentRight="true"
                     android:layout_width="20dp"
                     android:layout_height="20dp" />
                 <ImageView
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:layout_toLeftOf="@+id/share_imag_share"
                     android:id="@+id/share_imag_praise"
                     android:src="@drawable/share_praise_unclick"
                     android:layout_width="20dp"
                     android:layout_height="20dp" />
                 <ImageView
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:layout_toLeftOf="@+id/share_imag_praise"
                     android:id="@+id/share_imag_comment"
                     android:src="@drawable/share_comment"

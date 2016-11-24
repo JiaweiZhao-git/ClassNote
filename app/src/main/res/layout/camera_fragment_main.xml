@@ -28,12 +28,6 @@
                     android:background="@drawable/djg"
                     android:scaleType="fitXY"
                     android:visibility="gone" />
-                <ImageButton
-                    android:id="@+id/camera_flash"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:background="@drawable/camera_flash_auto"/>
 
         </RelativeLayout>
 

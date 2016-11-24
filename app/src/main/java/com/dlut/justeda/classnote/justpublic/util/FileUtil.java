@@ -50,7 +50,7 @@ public class FileUtil {
     public void createTextFile(Context context,String className, String date) {
         String path = Environment.getExternalStorageDirectory().getAbsolutePath()+"/ClassNote/"+className+"/small/"+"TEXT"+date+".png";
             //用默认图片填充这个文件
-            drawableTofile(context.getResources().getDrawable(R.drawable.ic_launcher),path);
+            drawableTofile(context.getResources().getDrawable(R.drawable.note_list_text),path);
     }
 
     public void drawableTofile(Drawable drawable, String path){

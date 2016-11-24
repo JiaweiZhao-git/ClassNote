@@ -1,13 +1,13 @@
 package com.dlut.justeda.classnote.justpublic.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -27,7 +27,7 @@ import java.util.List;
  * Created by 赵佳伟 on 2016/11/9.
  * chaomaer is creating
  */
-public class ShareFragment extends Fragment implements View.OnClickListener ,View.OnTouchListener{
+public class ShareFragment extends Fragment implements View.OnClickListener{
     private static final String TAG = "ShareFragment";
     private ImageButton button_add;
     private View view;
@@ -35,14 +35,17 @@ public class ShareFragment extends Fragment implements View.OnClickListener ,Vie
     private List<TopicMeg> list;
     private ListView listView;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private SharedPreferences sharedPreferences;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        view = inflater.inflate(R.layout.share_main_layout, container, false);
 
-
-        Network.login("123","123");
-        Network.getTopcilist(1,10);
+        sharedPreferences=getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String name=sharedPreferences.getString("name","123");
+        String password=sharedPreferences.getString("password","123");
+        Network.login(name,password);
+        Network.getTopcilist(1,100);
         initUI();
         initData();
         shareImageAdapter=new ShareImageAdapter(getContext(),list);
@@ -77,23 +80,6 @@ public class ShareFragment extends Fragment implements View.OnClickListener ,Vie
                 startActivity(new Intent(getContext(),SharePublishActivity.class));
                 break;
         }
-    }
-
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        switch (motionEvent.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                Log.e(TAG, "onTouch: ---->down" );
-               // view.getParent().getParent().getParent().requestDisallowInterceptTouchEvent(true);
-                break;
-            case MotionEvent.ACTION_MOVE:
-               // view.getParent().getParent().getParent().requestDisallowInterceptTouchEvent(true);
-                break;
-            case MotionEvent.ACTION_CANCEL:
-              //  view.getParent().getParent().getParent().requestDisallowInterceptTouchEvent(false);
-                break;
-        }
-        return true;
     }
 
 }

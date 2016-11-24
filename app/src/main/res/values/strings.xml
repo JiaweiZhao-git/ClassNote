@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ClassNote</string>
+    <string name="app_name">图记</string>
     <string name="share_sharespace">资源共享</string>
     <string name="share_myname">我的名字</string>
     <string name="defalut_content">我什么也没有说</string>

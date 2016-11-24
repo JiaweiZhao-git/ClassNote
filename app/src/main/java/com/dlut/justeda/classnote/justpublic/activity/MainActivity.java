@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ import com.dlut.justeda.classnote.justpublic.fragment.ShareFragment;
 import com.dlut.justeda.classnote.justpublic.util.FileUtil;
 import com.dlut.justeda.classnote.note.util.BitmapUtil;
 import com.dlut.justeda.classnote.note.util.ClassTime;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +58,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private SlidingMenu mSlidingMenu;
     private TextView user_name;
+    private RoundedImageView user_image;
+    private LinearLayout user_pop;
+    private LinearLayout user_favourite;
+    private LinearLayout user_zip;
+    private LinearLayout user_related;
+    private LinearLayout user_settings;
+    private LinearLayout user_feedback;
 
     private FileUtil fileUtil;
     private ClassTime classTime;
@@ -92,6 +101,27 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         user_name = (TextView) mSlidingMenu.findViewById(R.id.main_left_user_name);
         user_name.setOnClickListener(this);
 
+        user_image = (RoundedImageView) mSlidingMenu.findViewById(R.id.main_left_user_default_image);
+        user_image.setOnClickListener(this);
+
+        user_pop = (LinearLayout) mSlidingMenu.findViewById(R.id.main_left_pop_file);
+        user_pop.setOnClickListener(this);
+
+        user_favourite = (LinearLayout) mSlidingMenu.findViewById(R.id.main_left_user_favorite);
+        user_favourite.setOnClickListener(this);
+
+        user_zip = (LinearLayout) mSlidingMenu.findViewById(R.id.main_left_user_zip_file);
+        user_zip.setOnClickListener(this);
+
+        user_related = (LinearLayout) mSlidingMenu.findViewById(R.id.main_left_user_related);
+        user_related.setOnClickListener(this);
+
+        user_settings = (LinearLayout) mSlidingMenu.findViewById(R.id.main_left_settings);
+        user_settings.setOnClickListener(this);
+
+        user_feedback = (LinearLayout) mSlidingMenu.findViewById(R.id.main_left_feedback);
+        user_feedback.setOnClickListener(this);
+
         classTime = new ClassTime();
         fileUtil = new FileUtil();
         fileUtil.createInitFiles();
@@ -118,6 +148,28 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             case R.id.main_left_user_name:
                 Intent intent = new Intent(MainActivity.this, LeftLogin.class);
                 startActivity(intent);
+                break;
+            case R.id.main_left_user_default_image:
+
+                break;
+            case R.id.main_left_pop_file:
+
+                break;
+            case R.id.main_left_user_favorite:
+
+                break;
+            case R.id.main_left_user_zip_file:
+
+                break;
+            case R.id.main_left_user_related:
+
+                break;
+            case R.id.main_left_settings:
+
+                break;
+            case R.id.main_left_feedback:
+                Intent intentFeedBack = new Intent(MainActivity.this, FeedBackActivity.class);
+                startActivity(intentFeedBack);
                 break;
             default:
                 resetImage();
@@ -156,6 +208,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 cameraFragment.getCameraView().setDirPath(Environment.getExternalStorageDirectory() + "/ClassNote/"+name+"/");
                 cameraFragment.getCameraView().setPicQuality(100);
                 cameraFragment.getCameraView().takePicture(onCameraFragment);
+                mSlidingMenu.setInteruptAble(false);
                 /*
                 不知道为什么这里有时候比拍照要晚一点
                 需要在notelist界面上加刷新，重新执行改名、压缩
@@ -166,8 +219,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 //                BitmapUtil bitmapUtil = new BitmapUtil();
 //                bitmapUtil.renamePictures(Environment.getExternalStorageDirectory() + "/ClassNote/"+className+"/");
             }
-
-
         }
         if (index == 2) {
             mSlidingMenu.setInteruptAble(false);

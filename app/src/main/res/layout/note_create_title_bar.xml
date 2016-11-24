@@ -7,9 +7,10 @@
 
     <ImageButton
         android:id="@+id/createnote_titlebar_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_launcher"/>
+        android:layout_centerVertical="true"
+        android:layout_width="48dp"
+        android:layout_height="44dp"
+        android:background="@drawable/create_note_back"/>
 
     <TextView
         android:id="@+id/createnote_titlebar_text"
@@ -24,9 +25,10 @@
 
     <ImageButton
         android:id="@+id/createnote_titlebar_save"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@drawable/ic_launcher"
+        android:layout_centerVertical="true"
+        android:layout_width="48dp"
+        android:layout_height="44dp"
+        android:background="@drawable/create_note_send"
         android:layout_alignParentRight="true"/>
 
 

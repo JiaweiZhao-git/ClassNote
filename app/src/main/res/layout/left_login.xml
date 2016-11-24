@@ -7,21 +7,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/bg_white" >
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:visibility="gone"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <ImageView
         android:id="@+id/myImage"
         android:layout_width="70dip"
         android:layout_height="70dip"
         android:layout_marginTop="65dip"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/ic_launcher"/>
+        android:background="@mipmap/ic_launcher"/>
     <EditText
         android:id="@+id/studentNumber"
         android:layout_width="match_parent"
@@ -53,7 +45,6 @@
         android:layout_marginLeft="30dip"
         android:layout_marginRight="30dip"
         android:layout_below="@id/studentNumber"
-        android:inputType="numberPassword"
         android:background="@drawable/fontround"/>
 
     <TextView

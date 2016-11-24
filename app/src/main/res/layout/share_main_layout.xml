@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_white">
     <include layout="@layout/share_title_bar"/>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/share_swiperefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ListView
-            android:background="@mipmap/ic_launcher"
             android:listSelector="@android:color/transparent"
             android:id="@+id/share_listview"
             android:layout_width="match_parent"

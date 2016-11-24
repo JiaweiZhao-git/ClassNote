@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dlut.justeda.classnote.R;
+import com.dlut.justeda.classnote.justpublic.contralwidget.ClassNameDialog;
 import com.dlut.justeda.classnote.note.noteadapter.NoteItem;
 import com.dlut.justeda.classnote.note.noteadapter.NoteListAdapter;
 import com.dlut.justeda.classnote.note.ui.NoteArcMenu;
@@ -69,7 +71,7 @@ public class NoteListActivity extends Activity {
         noteArcMenu = (NoteArcMenu) findViewById(R.id.note_arcmenu);
         listView = (ListView) findViewById(R.id.note_fragment_pictures_list);
 
-        noteItemsList.add(new NoteItem("...", R.drawable.note_item));
+        noteItemsList.add(new NoteItem("...", R.drawable.note_back));
         Bitmap bitmap=null;
         BitmapUtil bitmapUtil = new BitmapUtil();
         String path= Environment.getExternalStorageDirectory().getAbsolutePath()+"/ClassNote/"+title_text+"/small";
@@ -142,7 +144,8 @@ public class NoteListActivity extends Activity {
                 }else{
                     String index = imagePath.get(position)
                             .substring(imagePath.get(position).length()-20,imagePath.get(position).length()-16);
-                    if (index != "NOTE") {
+                    Log.e("noteList", index);
+                    if (!index.contains("NOTE")) {
                         Intent intent = new Intent(NoteListActivity.this, CreateNote.class);
                         startActivity(intent);
                     }else{
@@ -182,13 +185,24 @@ public class NoteListActivity extends Activity {
                     renameDialog.show();
                 } else if (pos == 2) {
                     //剪切有个接口
+                    ClassNameDialog classNameDialog = new ClassNameDialog();
+                    classNameDialog.showClassNameListToShear(
+                            imagePath.get(cuttentPos),"剪切到：",NoteListActivity.this,NoteListActivity.this);
+                    noteItemsList.remove(cuttentPos);
+                    noteListAdapter.notifyDataSetChanged();
+                    Toast.makeText(NoteListActivity.this,"剪切成功",Toast.LENGTH_SHORT).show();
                 } else if (pos == 3) {
                     noteItemsList.remove(cuttentPos);
                     noteListAdapter.notifyDataSetChanged();
                 } else if (pos == 4) {
                     //复制有个接口
+                    ClassNameDialog classNameDialog = new ClassNameDialog();
+                    classNameDialog.showClassNameListToCopy(
+                            imagePath.get(cuttentPos),"复制到：",NoteListActivity.this,NoteListActivity.this);
+                    Toast.makeText(NoteListActivity.this,"复制成功",Toast.LENGTH_SHORT).show();
                 } else if (pos == 5) {
                     //粘贴还是得长按一点才行
+                    Toast.makeText(NoteListActivity.this,"剪切板裏爲空~",Toast.LENGTH_SHORT).show();
                 }
             }
         });

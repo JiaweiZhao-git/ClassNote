@@ -19,10 +19,7 @@
     <ImageButton
         android:id="@+id/share_title_add"
         android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
+        android:layout_width="48dp"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_launcher"/>
-
-
-
+        android:background="@mipmap/ic_launcher"/>
 </RelativeLayout>
