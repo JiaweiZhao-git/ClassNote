@@ -108,22 +108,41 @@ public class Network {
      * @param content
      */
     public static void publish(File file, String content ){
-        OkHttpUtils.post()
-                .url(Constant.UPLOADIMG_URL)
-                //.addFile("file",file.getName(),file)
-                .addParams("text",content)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        Log.e("publishErrorInfo",e.toString());
+        if(file.getName()=="null") {
+            OkHttpUtils.post()
+                    .url(Constant.UPLOADIMG_URL)
+                    .addParams("text", content)
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            Log.e("publishErrorInfo", e.toString());
 
-                    }
-                    @Override
-                    public void onResponse(String response, int id) {
-                        Log.e("publishresponse",response);
-                    }
-                });
+                        }
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Log.e("publishresponse", response);
+                        }
+                    });
+        }else {
+            OkHttpUtils.post()
+                    .url(Constant.UPLOADIMG_URL)
+                    .addFile("file",file.getName(),file)
+                    .addParams("text",content)
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            Log.e("publishErrorInfo",e.toString());
+
+                        }
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Log.e("publishresponse",response);
+                        }
+                    });
+        }
     }
     /**
      * 获取说说的列表

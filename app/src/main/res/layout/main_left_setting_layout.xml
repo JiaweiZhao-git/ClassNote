@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/setting_user_read"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="阅读用户协议"
+        android:textSize="22sp"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:textColor="@color/font_black"
+        />
+
+    <TextView
+        android:layout_below="@id/setting_user_read"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="wifi下更新"
+        android:textSize="22sp"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:textColor="@color/font_black"/>
+    <Button
+        android:id="@+id/setting_quit_login"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="退出登录"
+        android:background="@drawable/round"
+        android:textColor="#f7071b"
+        android:textSize="24sp"/>
+
+
+</RelativeLayout>

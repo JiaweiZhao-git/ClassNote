@@ -18,17 +18,51 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * 用于打开相册并将选取图片放在ClassNote/相册管理 文件夹下
+ * 用于打开相册并将选取图片放在ClassNote/相册管理 文件夹下——放在接口下的课程文件夹
+ * 1、将相册管理的放在响应的课程下面——用dialog选课程——name
+ * 根据操作的当前时间去命名——不要from
+ * 2、将头像放在一个单独的文件夹default下——同时执行压缩操作
  * Created by 赵佳伟 on 2016/11/9.
  */
 public class OpenPhotoAlbum {
 
     private Intent data;
     private Context context;
+    private String path = "";
 
     public OpenPhotoAlbum(Context context,Intent data){
         this.context = context;
         this.data = data;
+    }
+
+
+    /**
+     * 用于头像的选择
+     */
+
+    public void handleIamgeOnKitKatForUserImage(String defaultName){
+        String imagePath=null;
+        Uri uri=data.getData();
+        if(DocumentsContract.isDocumentUri(context, uri)){
+
+            String docId=DocumentsContract.getDocumentId(uri);
+
+            if("com.android.providers.media.documents".equals(
+                    uri.getAuthority())){
+                String id=docId.split(":")[1];
+                String selection= MediaStore.Images.Media._ID+"="+id;
+                imagePath=getImagePath(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,selection);
+            }else if("com.android.providers.downloads.documents".equals(uri.getAuthority())){
+                Uri contentUri = ContentUris.withAppendedId(
+                        Uri.parse("content://downloads/public_downloads"),
+                        Long.valueOf(docId));
+                imagePath=getImagePath(contentUri,null);
+            }
+        }else if("content".equalsIgnoreCase(uri.getScheme())){
+            imagePath=getImagePath(uri, null);
+        }
+        displayImage(imagePath);
     }
 
     /**

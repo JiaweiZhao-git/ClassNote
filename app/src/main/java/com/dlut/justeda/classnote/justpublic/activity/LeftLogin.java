@@ -115,9 +115,11 @@ public class LeftLogin extends Activity {
                     case -1:
                         alertDialog.dismiss();
                         Toast.makeText(LeftLogin.this,"check network",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LeftLogin.this, FailLoadingActivity.class);
+                        startActivity(intent);
                     case 0:
                         alertDialog.dismiss();
-                        Toast.makeText(LeftLogin.this,"login failure",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LeftLogin.this,"学号或密码错误~",Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         alertDialog.dismiss();

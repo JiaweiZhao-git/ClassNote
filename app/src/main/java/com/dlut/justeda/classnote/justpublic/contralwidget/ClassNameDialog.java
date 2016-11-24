@@ -30,6 +30,42 @@ import java.util.HashMap;
  */
 public class ClassNameDialog {
 
+    private String className = "其他";
+
+    public String getClassNameOnly(View view, String title,final Activity activity, final Context context){
+        ClassDatabaseHelper dbHelper = new ClassDatabaseHelper(context, "Courses.db", null, 2);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.query("Courses", null, null, null, null, null, null);
+        int sum = 0;
+        HashMap<Integer, String> names = new HashMap<>();
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(cursor.getColumnIndex("name"));
+                names.put(sum, name);
+                sum++;
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title);
+        builder.setIcon(R.drawable.ic_launcher);
+        final String[] items = new String[sum+1];
+        items[0]="其他";
+        for(int i=1;i<sum+1;i++) {
+            items[i] = names.get(i-1);
+        }
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int position) {
+                className = items[position];
+            }
+        });
+        builder.setCancelable(true);
+        builder.show();
+        return className;
+    }
+
     public void showClassNameListDialog(View view, String title,final Activity activity, final Context context) {
 
         ClassDatabaseHelper dbHelper = new ClassDatabaseHelper(context, "Courses.db", null, 2);
@@ -205,5 +241,7 @@ public class ClassNameDialog {
             }
         }).start();
     }
+
+
 
 }

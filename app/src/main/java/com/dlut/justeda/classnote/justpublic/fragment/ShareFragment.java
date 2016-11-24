@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * 用于显示share主界面——之后可以跳转到其它activity
  * Created by 赵佳伟 on 2016/11/9.
- * chaomaer is creating
+ * chaomaer is done
  */
 public class ShareFragment extends Fragment implements View.OnClickListener{
     private static final String TAG = "ShareFragment";

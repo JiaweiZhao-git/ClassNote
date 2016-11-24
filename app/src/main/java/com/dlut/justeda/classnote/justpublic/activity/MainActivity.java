@@ -22,6 +22,7 @@ import com.dlut.justeda.classnote.justpublic.fragment.ShareFragment;
 import com.dlut.justeda.classnote.justpublic.util.FileUtil;
 import com.dlut.justeda.classnote.note.util.BitmapUtil;
 import com.dlut.justeda.classnote.note.util.ClassTime;
+import com.dlut.justeda.classnote.note.util.OpenPhotoAlbum;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
@@ -34,6 +35,13 @@ import java.util.List;
  * changetab(n)返回的界面
  * 需要相機按鍵動畫效果實現
  * 最後將各個activity的finish()事件處理好
+ *
+ *
+ *<>important thing</>
+ * tuChaomaer
+ * 换完头像后可以在分享界面同步——本地同样的图片，bitmap加载
+ * 分享界面获取url后加载图片的代码
+ * 点赞的奇怪逻辑
  * Created by 赵佳伟 on 2016/11/9.
  */
 public class MainActivity extends FragmentActivity implements View.OnClickListener{
@@ -150,22 +158,29 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 startActivity(intent);
                 break;
             case R.id.main_left_user_default_image:
-
+                //进入相册选择照片然后可以压缩一下，存在一个叫default的文件夹下
+                //requestcode==250
+                //名字一样，每次操作算是覆盖
+                //开个线程让他自己把压缩后的图片加载出来
+                Intent cameraIntent=new Intent(
+                        "android.intent.action.GET_CONTENT");
+                cameraIntent.setType("image/*");
+                startActivityForResult(cameraIntent, 250);
                 break;
             case R.id.main_left_pop_file:
-
+                //开个接口用来选择课程，然后执行异步压缩操作
                 break;
             case R.id.main_left_user_favorite:
-
+                startActivity(new Intent(MainActivity.this,FailLoadingActivity.class));
                 break;
             case R.id.main_left_user_zip_file:
 
                 break;
             case R.id.main_left_user_related:
-
+                startActivity(new Intent(MainActivity.this,FailLoadingActivity.class));
                 break;
             case R.id.main_left_settings:
-
+                startActivity(new Intent(MainActivity.this,SettingsActivity.class));
                 break;
             case R.id.main_left_feedback:
                 Intent intentFeedBack = new Intent(MainActivity.this, FeedBackActivity.class);
@@ -286,6 +301,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
-
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 250:
+                OpenPhotoAlbum openPhotoAlbum = new OpenPhotoAlbum(MainActivity.this, data);
+                openPhotoAlbum.handleImageOnKitKat();
+                break;
+        }
+    }
 }

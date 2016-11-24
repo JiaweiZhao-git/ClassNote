@@ -15,11 +15,13 @@ import com.dlut.justeda.classnote.justpublic.contralwidget.ClassNameDialog;
 import com.dlut.justeda.classnote.justpublic.fragment.ShareFragment;
 import com.dlut.justeda.classnote.share.data.Data;
 import com.dlut.justeda.classnote.share.message.TopicMeg;
+import com.dlut.justeda.classnote.share.util.Constant;
 import com.dlut.justeda.classnote.share.util.Network;
 
 import java.io.File;
 
 /**
+ * 发布界面
  * Created by chaomaer on 2016/11/8.
  */
 
@@ -28,6 +30,7 @@ public class SharePublishActivity extends Activity implements View.OnClickListen
     private EditText publish_content;
     private ImageView publish_img;
     private String topcontent;
+    private String imgurl;
 
     private ClassNameDialog classNameDialog;
     @Override
@@ -47,6 +50,7 @@ public class SharePublishActivity extends Activity implements View.OnClickListen
         publish_img.setOnClickListener(this);
 
         classNameDialog = new ClassNameDialog();
+        imgurl=new String("null");
     }
 
     @Override
@@ -61,15 +65,22 @@ public class SharePublishActivity extends Activity implements View.OnClickListen
                 if(!TextUtils.isEmpty(topcontent)){
                     Data.getTopicMeglist().add(0,new TopicMeg(Data.avatarurl,"",topcontent,Data.username));
                     ShareFragment.shareImageAdapter.notifyDataSetChanged();
-                    Network.publish(new File(""),topcontent);
+                    if(!imgurl.equals("null")){
+                        Network.publish(new File(imgurl),topcontent);
+                        Constant.imageLoader.displayImage("file://"+imgurl,publish_img);
+                    }else {
+                        Network.publish(new File("null"),topcontent);
+                    }
                     this.finish();
                 }
+
                 break;
             case R.id.share_share_image:
 
                 break;
             case R.id.share_public_img:
-                classNameDialog.showClassNameListDialog(v,"請選擇課程：",SharePublishActivity.this,SharePublishActivity.this);
+                Log.e("share_public_img", "onClick:----->called " );
+                classNameDialog.showClassNameListDialog(v,"请选择课程",SharePublishActivity.this,SharePublishActivity.this);
                 break;
         }
     }
@@ -88,6 +99,10 @@ public class SharePublishActivity extends Activity implements View.OnClickListen
 
         if (requestCode == 110 && resultCode == 100) {
             String result = data.getStringExtra("result");
+            imgurl=result;
+            if(!imgurl.equals("null")){
+                Constant.imageLoader.displayImage("file:/"+imgurl,publish_img);
+            }
             Log.e(getLocalClassName(), result);
         }
     }

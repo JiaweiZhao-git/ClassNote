@@ -41,6 +41,8 @@
         <activity android:name=".share.activity.SharePublishActivity"/>
         <activity android:name=".note.activity.NoteListForChoose"/>
         <activity android:name=".justpublic.activity.FailLoadingActivity"/>
+        <activity android:name=".justpublic.activity.SettingsActivity"/>
+        <activity android:name=".justpublic.activity.AgreeMentActivity"/>
     </application>
 
 </manifest>
